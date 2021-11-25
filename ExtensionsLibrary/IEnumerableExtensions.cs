@@ -8,6 +8,20 @@ namespace ExtensionsLibrary
 {
     public static class IEnumerableExtensions
     {
+        public static void AsParallelForAll<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            source.AsParallel().ForAll(x => action(x));
+        }
+
+        public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> source, int chunkSize)
+        {
+            while (source.Any())
+            {
+                yield return source.Take(chunkSize);
+                source = source.Skip(chunkSize);
+            }
+        }
+
         public static Dictionary<TKey, TSource> ToDistinctDictionary<TKey, TSource>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) where TKey : notnull
         {
             var result = new Dictionary<TKey, TSource>();
