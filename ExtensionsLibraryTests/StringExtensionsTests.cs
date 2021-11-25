@@ -18,7 +18,7 @@ namespace ExtensionsLibrary.Tests
             Assert.IsTrue(value.IsNullOrEmpty());
 
             value = "value";
-            Assert.IsTrue(value.IsNullOrEmpty());
+            Assert.IsFalse(value.IsNullOrEmpty());
         }
     }
 }
