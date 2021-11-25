@@ -8,9 +8,9 @@ namespace ExtensionsLibrary
 {
     public static class IListExtensions
     {
-        public static bool ContainsIndex<T>(this IList<T> self, int index)
+        public static bool ContainsIndex<T>(this IList<T> source, int index)
         {
-            return index < self.Count;
+            return index < source.Count;
         }
     }
 }

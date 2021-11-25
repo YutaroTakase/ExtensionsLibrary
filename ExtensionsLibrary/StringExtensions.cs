@@ -2,24 +2,24 @@
 {
     public static class StringExtensions
     {
-        public static bool IsNullOrEmpty(this string self)
+        public static bool IsNullOrEmpty(this string source)
         {
-            return string.IsNullOrEmpty(self);
+            return string.IsNullOrEmpty(source);
         }
 
-        public static bool IsNullOrWhiteSpace(this string self)
+        public static bool IsNullOrWhiteSpace(this string source)
         {
-            return string.IsNullOrWhiteSpace(self);
+            return string.IsNullOrWhiteSpace(source);
         }
 
-        public static int ToInt(this string self)
+        public static int ToInt(this string source)
         {
-            return int.Parse(self);
+            return int.Parse(source);
         }
 
-        public static int? ToIntOrNull(this string self)
+        public static int? ToIntOrNull(this string source)
         {
-            if (int.TryParse(self, out var result))
+            if (int.TryParse(source, out var result))
             {
                 return result;
             }
@@ -27,9 +27,9 @@
             return null;
         }
 
-        public static int ToIntOrDefault(this string self, int defaultValue = 0)
+        public static int ToIntOrDefault(this string source, int defaultValue = 0)
         {
-            var result = ToIntOrNull(self);
+            var result = ToIntOrNull(source);
 
             if (result.HasValue)
             {
