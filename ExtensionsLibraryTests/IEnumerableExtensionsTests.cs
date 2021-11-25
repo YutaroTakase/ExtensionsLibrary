@@ -62,16 +62,14 @@ namespace ExtensionsLibrary.Tests
         }
 
         [TestMethod()]
-        public void AsParallelForAllTest()
+        public void StringJoinTest()
         {
             var list1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-            var list2 = new int[] { 2, 4, 6, 8, 10, 12, 14, 16 };
-            var list3 = new List<int>();
+            var list2 = string.Join(",", list1);
 
-            list1.AsParallelForAll(x => list3.Add(x * 2));
-            list3.Sort();
-            
-            CollectionAssert.AreEqual(list2, list3);
+            var result = list1.StringJoin(",");
+
+            Assert.AreEqual(list2, result);
         }
     }
 }

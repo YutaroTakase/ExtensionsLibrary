@@ -8,9 +8,9 @@ namespace ExtensionsLibrary
 {
     public static class IEnumerableExtensions
     {
-        public static void AsParallelForAll<T>(this IEnumerable<T> source, Action<T> action)
+        public static string StringJoin<T>(this IEnumerable<T> source, string separator)
         {
-            source.AsParallel().ForAll(x => action(x));
+            return string.Join(separator, source);
         }
 
         public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> source, int chunkSize)
