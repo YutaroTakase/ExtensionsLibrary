@@ -17,16 +17,15 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.x
-    - name: Install dependencies
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
       run: dotnet restore
-      working-directory: src/SlackNotification
     - name: Build
-      run: dotnet build src/SlackNotification/SlackNotification.sln --no-restore
+      run: dotnet build --no-restore
     - name: Publish to NuGet
       uses: brandedoutcast/publish-nuget@v2
       with:
-        PROJECT_FILE_PATH: src/SlackNotification/SlackNotification.csproj
+        PROJECT_FILE_PATH: ExtensionsLibrary/ExtensionsLibrary.csproj
         VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
         TAG_FORMAT: '*'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
