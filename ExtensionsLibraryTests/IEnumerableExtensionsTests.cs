@@ -47,5 +47,31 @@ namespace ExtensionsLibrary.Tests
             public int Id { get; set; }
             public string Value { get; set; } = "";
         }
+
+        [TestMethod()]
+        public void ChunksTest()
+        {
+            var list1 = new int[] { 1, 2, 3 };
+            var list2 = new int[] { 4, 5, 6 };
+            var list3 = new int[] { 7, 8 };
+
+            var chunks = list1.Concat(list2).Concat(list3).Chunks(3);
+            CollectionAssert.AreEqual(list1, chunks.ElementAt(0).ToArray());
+            CollectionAssert.AreEqual(list2, chunks.ElementAt(1).ToArray());
+            CollectionAssert.AreEqual(list3, chunks.ElementAt(2).ToArray());
+        }
+
+        [TestMethod()]
+        public void AsParallelForAllTest()
+        {
+            var list1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+            var list2 = new int[] { 2, 4, 6, 8, 10, 12, 14, 16 };
+            var list3 = new List<int>();
+
+            list1.AsParallelForAll(x => list3.Add(x * 2));
+            list3.Sort();
+            
+            CollectionAssert.AreEqual(list2, list3);
+        }
     }
 }
