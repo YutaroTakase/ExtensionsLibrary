@@ -71,5 +71,18 @@ namespace ExtensionsLibrary.Tests
 
             Assert.AreEqual(list2, result);
         }
+
+        [TestMethod()]
+        public void IsNullOrEmptyTest()
+        {
+            var list1 = new int[] { 1 };
+            Assert.IsFalse(list1.IsNullOrEmpty());
+
+            list1 = new int[]{};
+            Assert.IsTrue(list1.IsNullOrEmpty());
+
+            list1 = null;
+            Assert.IsTrue(list1!.IsNullOrEmpty());
+        }
     }
 }

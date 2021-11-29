@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExtensionsLibrary
+﻿namespace ExtensionsLibrary
 {
     public static class IEnumerableExtensions
     {
@@ -52,6 +46,11 @@ namespace ExtensionsLibrary
             }
 
             return result;
+        }
+
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        {
+            return source is null || !source.Any();
         }
     }
 }
