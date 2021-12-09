@@ -1,13 +1,12 @@
 using System.Text.Json;
 
-namespace ExtensionsLibrary
+namespace ExtensionsLibrary;
+
+public static class ObjectExtensions
 {
-    public static class ObjectExtensions
+    public static T? DeepCopy<T>(this object source)
     {
-        public static T? DeepCopy<T>(this object source)
-        {
-            var json = JsonSerializer.Serialize(source);
-            return JsonSerializer.Deserialize<T>(json);
-        }
+        var json = JsonSerializer.Serialize(source);
+        return JsonSerializer.Deserialize<T>(json);
     }
 }
